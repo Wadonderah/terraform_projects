@@ -1,0 +1,19 @@
+digraph G {
+  rankdir = "RL";
+  node [shape = rect, fontname = "sans-serif"];
+  "data.aws_ami.amazon_linux" [label="data.aws_ami.amazon_linux"];
+  "aws_autoscaling_group.wadoh" [label="aws_autoscaling_group.wadoh"];
+  "aws_launch_template.wadoh" [label="aws_launch_template.wadoh"];
+  "aws_security_group.wadoh" [label="aws_security_group.wadoh"];
+  "aws_subnet.wadoh_a" [label="aws_subnet.wadoh_a"];
+  "aws_subnet.wadoh_b" [label="aws_subnet.wadoh_b"];
+  "aws_vpc.wadoh" [label="aws_vpc.wadoh"];
+  "aws_autoscaling_group.wadoh" -> "aws_launch_template.wadoh";
+  "aws_autoscaling_group.wadoh" -> "aws_subnet.wadoh_a";
+  "aws_autoscaling_group.wadoh" -> "aws_subnet.wadoh_b";
+  "aws_launch_template.wadoh" -> "data.aws_ami.amazon_linux";
+  "aws_launch_template.wadoh" -> "aws_security_group.wadoh";
+  "aws_security_group.wadoh" -> "aws_vpc.wadoh";
+  "aws_subnet.wadoh_a" -> "aws_vpc.wadoh";
+  "aws_subnet.wadoh_b" -> "aws_vpc.wadoh";
+}
