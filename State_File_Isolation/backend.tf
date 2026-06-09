@@ -1,0 +1,11 @@
+terraform {
+  backend "s3" {
+    bucket = "wadoh"
+    key    = "state_file_isolation/terraform.tfstate"
+    region = "us-east-2"
+
+    dynamodb_table ="wadoh-1"
+    encrypt = true
+    
+  }
+}
